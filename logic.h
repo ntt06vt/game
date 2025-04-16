@@ -1,26 +1,26 @@
 #ifndef _LOGIC__H
 #define _LOGIC__H
-
-#define BOARD_SIZE 30
-#define EMPTY_CELL ' '
-#define O_CELL 'o'
-#define X_CELL 'x'
-
-struct Tictactoe {
-    char board[BOARD_SIZE][BOARD_SIZE];
-    char nextMove = O_CELL;
-
-    void init() {
-        for (int i = 0; i < BOARD_SIZE; i++)
-            for (int j = 0; j < BOARD_SIZE; j++) board[i][j] = EMPTY_CELL;
+#include<ctime>
+#include <cstdlib>
+#include <iostream>
+#include<algorithm>
+using namespace std;
+struct Game {
+    int board[4][4];
+    void mix()
+    {
+         srand(time(0));
+    for(int m=1;m<=100;m++)
+    {
+        int nn1 =   rand() % 4;
+        int nn2 =   rand() % 4;
+        int nn3 =   rand() % 4;
+        int nn4 =   rand() % 4;
+        swap(board[nn1][nn2],board[nn3][nn4]);
     }
-    void move(int row, int column) {
-        if (row >= 0 && row < BOARD_SIZE && column >= 0 && column < BOARD_SIZE)
-        {
-            board[row][column] = nextMove;
-            nextMove = (nextMove == O_CELL) ? X_CELL : O_CELL;
-        }
     }
 };
 
 #endif
+
+
